@@ -1,0 +1,11 @@
+compilerfinal.pdf (demo時的介紹報告)
+
+demo.md: demo時的測資(較好複製程式碼)
+demo.pdf: demo時的測資(pdf版本較難複製程式碼)
+
+example2.l: Flex檔案
+example2.y: bison檔案
+
+run2.bat: cd到此目錄，打上run2.bat即可啟動，離開時使用ctrl+Z+enter即可退出，退出時會順便把產生的檔案刪除
+
+tmp_CFG_design.txt: 我們設計的初步構想

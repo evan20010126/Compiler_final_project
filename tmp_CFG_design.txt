@@ -1,0 +1,47 @@
+commandlist -> commandlist command EOL
+
+command -> FUNCTIONNAME ASSIGN FUNCTION exp EOL
+            | FUNCTIONNAME ASSIGN FUNCTIONNAME exp EOL
+            | VAR ASSIGN NUMBER
+
+exp -> + FUNCTION exp | - FUNCTION exp | * FUNCTION exp
+        |  + FUNCTIONNAME exp | - FUNCTIONNAME exp | * FUNCTIONNAME exp
+
+
+
+F = {x^3+x^2+x^1+5} + 
+
+G = F + {x^5+x^2-45}
+
+x = 
+
+F = {x^3+x^2+x^1+5} + {x^3+x^2+x^1+5} - {}
+F = {x^3+x^2+x^1+5} + {x^3+x^2+x^1+5} + {x^3+x^2+x^1+5} + {x^3+x^2+x^1+5} + {x^3+x^2+x^1+5} + {x^3+x^2+x^1+5}
+
+F = {x^3+x^2+x^1+5} + {x^3+x^2+x^1+5} + {x^3+x^2+x^1+5}                                                      
+G = F + {x^3+x^2+x^1+5} + {x^3+x^2+x^1+5} + {x^3+x^2+x^1+5}
+
+calclist:/**/
+// |calclist exp EOL{printf ("=%d\n",$2);}
+|calclist FUNCTION EOL {printf("Hi, Im function");}
+|calclist FUNCTIONNAME EOL{printf("Hi, Im function name");}
+;
+
+
+command:
+FUNCTIONNAME ASSIGN exp EOL
+
+exp:
+exp [+-*/] FUNCTION
+
+FUNCTIONNAME ASSIGN FUNCTIONNAME [+-*/] FUNCTION EOL
+FUNCTIONNAME ASSIGN FUNCTION [+-*/] FUNCTIONNAME EOL
+
+-----------------------------------------------------------------------
+command:
+FUNCTIONNAME ASSIGN FUNCTION exp
+| FUNCTIONNAME ASSIGN FUNCTIONNAME exp
+
+exp:
+[+-*/] FUNCTIONNAME exp
+| ε
